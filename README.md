@@ -51,23 +51,27 @@
 
 ### Идея
 
-Есть три таблицы: Dogs, Cats и DogsCats. Многие собаки могут дружить с многими кошками. Связь между кошками и собаками описывается в таблице `Dogscats`.
+Есть три таблицы: dogs, cats и dogscats. Многие собаки могут дружить с многими кошками. Связь между кошками и собаками описывается в таблице `Dogscats`.
 
 ![Many-to-Many relation](readme_assets/2.png)  
 _Таблица 1_. Связь Many-to-Many.
 
 ### Модели
 
-1. В модели Dogs нужно описать связь с многими котами через промежуточную таблицу:
+1. В модели dogs, в методе associate нужно описать связь с многими котами через промежуточную таблицу:
 
    ```Javascript
-   this.belongsToMany(Cat, { through: 'DogsCats', foreignKey: 'dog_id' });
+   static associate(models) {
+         this.belongsToMany(models.dogs, { through: models.dogscats, foreignKey: 'cat_id' });
+       }
    ```
 
-1. В модели Cats нужно сделать аналогичную связь:
+1. В модели cats нужно сделать аналогичную связь:
 
    ```Javascript
-     this.belongsToMany(Dog, { through: 'DogsCats', foreignKey: 'cat_id' });
+     static associate(models) {
+           this.belongsToMany(models.cats, { through: models.dogscats, foreignKey: 'dog_id' });
+         }
    ```
 
 1. В модели Dogscats _ничего делать не нужно_
@@ -93,4 +97,4 @@ _Таблица 1_. Связь Many-to-Many.
        },
    ```
 
-1. В миграциях `Cats` и `Dogs` ничего делать не нужно
+1. В миграциях для моделей `cats` и `dogs` ничего делать не нужно
