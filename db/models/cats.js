@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class cats extends Model {
 
     static associate(models) {
-      this.belongsToMany(models.dogs, { through: models.dogscats, foreignKey: 'dog_id' });
+      this.belongsToMany(models.dogs, { through: models.dogscats, foreignKey: 'cat_id' });
     }
   }
   cats.init({

@@ -2,13 +2,9 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    /**
-     * Add seed commands here.
-     *
-     * Example: **/
 
     await queryInterface.bulkInsert(
-      'DogsCats',
+      'dogscats',
       [
         {
           dog_id: 2,
@@ -52,12 +48,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     */
-
-    await queryInterface.bulkDelete('DogsCats', null, {});
+    await queryInterface.bulkDelete('dogscats', null, {});
   },
 };
