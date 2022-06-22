@@ -9,6 +9,7 @@ const manyMain = async () => {
       attributes: ['name', 'age'],
     },
     order: [['age', 'DESC']],
+
   });
   console.log(catsWithFriends.map((cat) => (cat.name + ' have friends ' + cat.Dogs.map((dog) => dog.name))))
 
@@ -18,8 +19,9 @@ const manyMain = async () => {
         [Op.gte]: 4,
       },
     },
+    raw: true
   });
-  console.log(cats);
+  console.log({cats});
 };
 
 manyMain();
