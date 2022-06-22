@@ -28,15 +28,13 @@
 
 ## Что сделали
 
-1.  Создали модель командой `npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string` (изменили под себя) (название моделей в единственном числе)
+1.  Создали необходимое кол-во моделей командой `npx sequelize-cli model:generate --name cats --attributes name:string,age:integer` (изменили под себя)
     - Одновременно с этим создалась миграция
     - **Если поменяли что-то в модели - меняем и в миграции**
 1.  Накатили миграцию `npx sequelize-cli db:migrate`
 1.  Создали seeder командой `npx sequelize-cli seed:generate --name demo-user` (изменили под себя)
 
 ## На что обратить внимание
-
-1.  Когда пишем seeder, поля `createdAt` и `updatedAt` нужно заполнить
 
 1.  Когда пишем seeder, поля `createdAt` и `updatedAt` нужно заполнить самому `new Date()`
 
@@ -51,7 +49,7 @@
 
 ### Идея
 
-Есть три таблицы: dogs, cats и dogscats. Многие собаки могут дружить с многими кошками. Связь между кошками и собаками описывается в таблице `Dogscats`.
+Есть три таблицы: dogs, cats и dogscats. Многие собаки могут дружить с многими кошками. Связь между кошками и собаками описывается в таблице `dogscats`.
 
 ![Many-to-Many relation](readme_assets/2.png)  
 _Таблица 1_. Связь Many-to-Many.
